@@ -2,6 +2,7 @@
 
 #include <string>
 
+//класс для даты
 class Date{
     private:
         int Day;
@@ -16,7 +17,7 @@ class Date{
         int getMonth();
         int getYear();
 
-        int setDay(int newDay);
-        int setMonth(int newMonth);
-        int setYear(int newYear);
+        void setDay(int newDay);
+        void setMonth(int newMonth);
+        void setYear(int newYear);
 };
