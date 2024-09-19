@@ -11,7 +11,8 @@ Date Product::getValidUntil(){
 }
 
 //Конструкстор
-Product::Product(std::string name,
+Product::Product(std::string type,
+                 std::string name,
                  std::string article,
                  std::string flavor,
                  std::string color,
@@ -20,6 +21,7 @@ Product::Product(std::string name,
                  Date validUntil,
                  bool edible,
                  int price){
+    Type = type;
     Name = name;
     Article = article;
     Flavor = flavor;
@@ -32,6 +34,10 @@ Product::Product(std::string name,
 }
 
 //гетторы
+std::string Product::getType(){
+    return Type;
+}
+
 std::string Product::getName(){
     return Name;
 }
@@ -53,11 +59,38 @@ std::string Product::getPackaging(){
 }
 
 std::string Product::getDateOfManufactureStr(){
-    return DateOfManufacture.getData();
+    return DateOfManufacture.getDate();
 }
 
 std::string Product::getValidUntilStr(){
-    return ValidUntil.getData();
+    return ValidUntil.getDate();
 }
 
+void Product::setType(std::string input){
+    Type = input;
+}
+
+void Product::setName(std::string input){
+    Name = input;
+}
+
+void Product::setArticle(std::string input){
+    Article = input;
+}
+
+void Product::setFlavor(std::string input){
+    Flavor = input;
+}
+
+void Product::setColor(std::string input){
+    Color = input;
+}
+
+void Product::setPackaging(std::string input){
+    Packaging = input;
+}
+
+void Product::setDateOfManufacture(Date input){
+    DateOfManufacture.setDate(input);
+}
 
