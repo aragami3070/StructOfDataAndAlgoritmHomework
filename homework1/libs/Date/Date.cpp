@@ -1,6 +1,7 @@
 #include "Date.h"
 #include <string>
 
+// конструктор
 Date::Date(int day,
            int month,
            int year){
@@ -9,6 +10,7 @@ Date::Date(int day,
     Year = year;
 }
 
+// гетторы
 int Date::getDay(){
     return Day;
 }
@@ -25,6 +27,7 @@ std::string Date::getData(){
     return (std::to_string(Day) + "." + std::to_string(Month) + "." + std::to_string(Year));
 }
 
+// сетторы
 void Date::setDay(int input){
     Day = input;
 }

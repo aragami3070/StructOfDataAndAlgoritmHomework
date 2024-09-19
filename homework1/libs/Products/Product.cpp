@@ -1,6 +1,15 @@
 #include "Product.h"
 #include <string>
 
+// Private методы
+Date Product::getDateOfManufacture(){
+    return DateOfManufacture;
+}
+
+Date Product::getValidUntil(){
+    return ValidUntil;
+}
+
 //Конструкстор
 Product::Product(std::string name,
                  std::string article,
@@ -43,16 +52,12 @@ std::string Product::getPackaging(){
     return Packaging;
 }
 
-// std::string Product::getDateOfManufacture(){
-//     return DateOfManufacture;
-// }
-
-Date Product::getDateOfManufacture(){
-    return DateOfManufacture;
+std::string Product::getDateOfManufactureStr(){
+    return DateOfManufacture.getData();
 }
 
-Date Product::getValidUntil(){
-    return ValidUntil;
+std::string Product::getValidUntilStr(){
+    return ValidUntil.getData();
 }
 
 
