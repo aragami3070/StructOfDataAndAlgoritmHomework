@@ -29,4 +29,7 @@ public:
     void setMonth(int newMonth);
     void setYear(int newYear);
     void setDate(Date newDate);
+    bool operator==(Date someDate){
+        return (Day == someDate.getDay() && Month == someDate.getMonth() && Year == someDate.getYear());
+    }
 };
