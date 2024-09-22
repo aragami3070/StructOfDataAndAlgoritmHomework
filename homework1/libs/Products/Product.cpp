@@ -1,8 +1,20 @@
 #include "Product.h"
+#include <cstdlib>
 #include <iostream>
 #include <string>
 
 // Private методы
+
+// проверка на производственный брак
+bool Product::manufacturingDefects(){
+    int randResult = rand() % 101;
+    if (randResult == 100) {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
 
 //Конструкстор
 Product::Product(std::string type,
@@ -29,6 +41,7 @@ Product::Product(std::string type,
             Edible = edible;
             Price = price;
             Weight = weight;
+            Status = manufacturingDefects();
         }
         else {
             std::cout << "Error[418]: Date of manufacture can't be 0.0.0" << std::endl;
@@ -141,7 +154,7 @@ void Product::setPrice(int input){
         Price = input;
     }
     else {
-        std::cout << "Error[418]: Price can't be <=0" << std::endl;
+        std::cout << "Error[418]: Price can't be <= 0" << std::endl;
     }
 }
 
@@ -150,7 +163,7 @@ void Product::setWeight(double input){
         Weight = input;
     }
     else {
-        std::cout << "Error[418]: Weight can't be <=0" << std::endl;
+        std::cout << "Error[418]: Weight can't be <= 0" << std::endl;
     }
 }
 
@@ -166,9 +179,9 @@ std::string Product::getExpirationDate(){
     return expirationDate.getDate();
 }
 
-
+// попробовать съесть (если съедобное)
 void Product::tryEat(){
-    if (Edible) {
+    if (Edible && Status) {
         std::cout << "You ate it" << std::endl;
     }
     else {
@@ -176,8 +189,9 @@ void Product::tryEat(){
     }
 }
 
+// попробовать купить, если хватит денег
 void Product::tryBuy(int money){
-    if (money >= Price){
+    if (money >= Price && ((Status && Edible) || (Status && !Edible))){
         std::cout << "You bought it" << std::endl;
     }
     else{
@@ -186,17 +200,34 @@ void Product::tryBuy(int money){
 }
 
 
+// попробовать открыть (распаковать)
 void Product::tryOpen(){
     if (Packaging == "None") {
-    
+        std::cout << "This product didn't have packaging" << std::endl;
     }
-
+    else {
+        std::cout << "You opened it" << std::endl;
+    }
 }
 
+// попробовать приготовить
 void Product::tryCook(){
-
+    if (Edible && Status) {
+        std::cout << "You cooked it" << std::endl;
+    }
+    else {
+        std::cout << "You can't cook it" << std::endl;
+    }
 }
 
-void Product::tryUp(){
-
+// попробовать поднять
+void Product::tryUp(int numberOfPeople){
+    if ((Weight >= 40 && numberOfPeople == 1) || (Weight >= 65 && numberOfPeople == 2) ||
+        (Weight >= 80 && numberOfPeople == 3) || (Weight >= 92 && numberOfPeople == 4) ||
+        (Weight >= 95 && numberOfPeople == 5) || (Weight >= 100 && numberOfPeople >= 6)) {
+        std::cout << "You can't up it" << std::endl;
+    }
+    else {
+        std::cout << "You up it" << std::endl;
+    }
 }

@@ -18,6 +18,9 @@ private:
     bool Edible;            // съедобный = да/нет
     int Price;              // цена
     double Weight;          // вес
+    bool Status;            // если == 1, то товар в надлежащем состоянии, иначе испорчен (бракован)
+
+    bool manufacturingDefects();
 
 public:
     // конструктор
@@ -79,6 +82,6 @@ public:
 
     void tryCook();
 
-    void tryUp();
+    void tryUp(int numberOfPeople);
 
 };
