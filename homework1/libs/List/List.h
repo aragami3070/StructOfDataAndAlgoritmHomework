@@ -51,6 +51,17 @@ public:
 		std::cout << std::endl;
 	}
 
+	void printProduct() {
+		Node<Product>* temp = Head;//доп указатель на голову
+		while (temp != Tail->next && temp != nullptr) {//пока не дошли до конца
+			//вывод значения элемента на котором находится указатель temp
+			temp->inf.printAll();
+			//передвигаем указатель на следующий элемент
+			temp = temp->next;
+		}
+		std::cout << std::endl;
+	}
+
 	bool findNode(T value){
 		Node<T>* temp = Head;
 		while (temp != nullptr) {

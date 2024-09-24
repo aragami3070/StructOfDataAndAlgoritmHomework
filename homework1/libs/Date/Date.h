@@ -13,7 +13,7 @@ private:
 public:
     // задать дату равную 0.0.0 можно только через setDate или инициализацию
     Date(int Day = 0, int Month = 0, int Year = 0);
-    ~Date();
+    ~Date(){};
 
     // гетторы
     std::string getDate();

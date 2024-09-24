@@ -16,8 +16,9 @@ bool Product::manufacturingDefects(){
             return true;
         }
     }
-    std::cout << "Error: StatusInit == Err" << std::endl;
-    return false;
+    else {
+        return false;
+    }
 }
 
 //Конструкстор
@@ -162,6 +163,37 @@ double Product::getWeight(){
     std::cout << "Error: StatusInit == Err" << std::endl;
     return -10100.0;
 }
+
+bool Product::getStatus(){
+    if (StatusInit == OK){
+        return Status;
+    }
+    std::cout << "Error: StatusInit == Err" << std::endl;
+    return false;
+}
+
+std::string Product::getStatusInit(){
+    if (StatusInit == OK){
+        return "OK";
+    }
+    return "Err";
+}
+
+void Product::printAll(){
+    if (StatusInit == OK) {
+        std::cout << Type << ", " << Name << ", " << Article << ", " << Flavor 
+            << ", " << Color << ", " << Packaging << ", " << DateOfManufacture.getDate() 
+            << ", " << ValidUntil.getDate() << ", " << Edible << ", " << Price 
+            << ", " << Weight << ", " << Status << ", " << "OK" << std::endl;
+    }
+    else {
+        std::cout << "Error: StatusInit == Err" << std::endl;
+    }
+}
+
+
+
+
 
 // сетторы
 void Product::setType(std::string input){

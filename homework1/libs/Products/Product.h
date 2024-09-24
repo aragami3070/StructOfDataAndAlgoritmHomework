@@ -24,7 +24,7 @@ private:
     int Price;              // цена
     double Weight;          // вес
     bool Status;            // если == 1, то товар в надлежащем состоянии, иначе испорчен (бракован)
-    StatusEr StatusInit;
+    StatusEr StatusInit;    // правильно ли создан товар
 
     bool manufacturingDefects();
 
@@ -50,6 +50,10 @@ public:
     bool getEdible();
     int getPrice();
     double getWeight();
+    bool getStatus();
+    std::string getStatusInit();
+
+    void printAll();
 
     // пару методов для удобства работы с другими методами
     Date getDateOfManufacture();
@@ -70,11 +74,26 @@ public:
 
     // перегрузки операторов
 
+    void operator=(Product someProduct){
+        Type = someProduct.getType();
+        Name = someProduct.getName(); 
+        Article = someProduct.getArticle();
+        Flavor = someProduct.getFlavor(); 
+        Color = someProduct.getColor(); Packaging = someProduct.getPackaging();
+        DateOfManufacture = someProduct.getDateOfManufacture(); 
+        ValidUntil = someProduct.getValidUntil();
+        Edible = someProduct.getEdible();
+        Price = someProduct.getPrice();
+        Weight = someProduct.getWeight();
+        Status = someProduct.getStatus();
+        StatusInit = OK;
+    }
+
     bool operator==(Product someProduct){
         return (Type == someProduct.getType() && Name == someProduct.getName() && Article == someProduct.getArticle() &&
                 Flavor == someProduct.getFlavor() && Color == someProduct.getColor() && Packaging == someProduct.getPackaging() &&
                 DateOfManufacture == someProduct.getDateOfManufacture() && ValidUntil == someProduct.getValidUntil() && 
-                Edible == someProduct.getEdible() && Price == someProduct.getPrice() && Weight == someProduct.getWeight());
+                Edible == someProduct.getEdible() && Price == someProduct.getPrice() && Weight == someProduct.getWeight() && Status == someProduct.getStatus());
     }
 
     // доп методы
