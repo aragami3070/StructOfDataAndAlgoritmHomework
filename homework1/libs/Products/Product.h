@@ -4,6 +4,11 @@
 #include <string>
 #include "../Date/Date.h"
 
+//специальный тип данных, чтобы узнать - правильно ли создан объект класса или нет
+enum StatusEr{
+    OK, Err
+};
+
 // описание класса товара
 class Product{
 private:
@@ -19,6 +24,7 @@ private:
     int Price;              // цена
     double Weight;          // вес
     bool Status;            // если == 1, то товар в надлежащем состоянии, иначе испорчен (бракован)
+    StatusEr StatusInit;
 
     bool manufacturingDefects();
 
@@ -27,6 +33,10 @@ public:
     Product(std::string type, std::string name, std::string article,
             std::string flavor,std::string color, std::string packaging,
             Date dateOfManufacture, Date validUntil, bool edible, int price, double Weigt);
+
+    Product(){ StatusInit = Err; }
+
+    ~Product(){}
 
     // гетторы
     std::string getType();
@@ -72,7 +82,7 @@ public:
     // получение срока годности
     std::string getExpirationDate();
 
-    // съесть, купить, открыть, приготовить, поднять
+    // съесть, купить, открыть, приготовить, поднять, сравнение артикулов и параметров влияющих на артикул
 
     void tryEat();
 
@@ -83,5 +93,9 @@ public:
     void tryCook();
 
     void tryUp(int numberOfPeople);
+
+    bool compareArticle(Product otherProduct);
+
+    bool canCookTogether(Product otherProduct);
 
 };

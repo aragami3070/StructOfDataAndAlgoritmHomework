@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include "../Products/Product.h"
 
 
 template <typename T>
@@ -54,6 +55,17 @@ public:
 		Node<T>* temp = Head;
 		while (temp != nullptr) {
 			if (temp->inf == value){
+				return true;
+			}
+			temp = temp->next;
+		}
+		return false;
+	}
+
+	bool findProduct(Product value){
+		Node<Product>* temp = Head;
+		while (temp != nullptr) {
+			if (value.compareArticle(temp->inf)){
 				return true;
 			}
 			temp = temp->next;
