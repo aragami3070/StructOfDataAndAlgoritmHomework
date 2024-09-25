@@ -199,6 +199,7 @@ void Product::printAll(){
 void Product::setType(std::string input){
     if (StatusInit == OK){
         Type = input;
+        std::cout << "Change successfull" << std::endl;
     }
     else {
         std::cout << "Error: StatusInit == Err" << std::endl;
@@ -208,6 +209,7 @@ void Product::setType(std::string input){
 void Product::setName(std::string input){
     if (StatusInit == OK){
         Name = input;
+        std::cout << "Change successfull" << std::endl;
     }
     else {
         std::cout << "Error: StatusInit == Err" << std::endl;
@@ -217,6 +219,7 @@ void Product::setName(std::string input){
 void Product::setArticle(std::string input){
     if (StatusInit == OK){
         Article = input;
+        std::cout << "Change successfull" << std::endl;
     }
     else {
         std::cout << "Error: StatusInit == Err" << std::endl;
@@ -226,6 +229,7 @@ void Product::setArticle(std::string input){
 void Product::setFlavor(std::string input){
     if (StatusInit == OK){
         Flavor = input;
+        std::cout << "Change successfull" << std::endl;
     }
     else {
         std::cout << "Error: StatusInit == Err" << std::endl;
@@ -235,6 +239,7 @@ void Product::setFlavor(std::string input){
 void Product::setColor(std::string input){
     if (StatusInit == OK){
         Color = input;
+        std::cout << "Change successfull" << std::endl;
     }
     else {
         std::cout << "Error: StatusInit == Err" << std::endl;
@@ -244,6 +249,7 @@ void Product::setColor(std::string input){
 void Product::setPackaging(std::string input){
     if (StatusInit == OK){
         Packaging = input;
+        std::cout << "Change successfull" << std::endl;
     }
     else {
         std::cout << "Error: StatusInit == Err" << std::endl;
@@ -258,6 +264,7 @@ void Product::setDateOfManufacture(Date input){
         }
         else {
             DateOfManufacture.setDate(input);
+            std::cout << "Change successfull" << std::endl;
         }
     }
     else {
@@ -268,6 +275,7 @@ void Product::setDateOfManufacture(Date input){
 void Product::setValidUntil(Date input){
     if (StatusInit == OK){
         ValidUntil.setDate(input);
+        std::cout << "Change successfull" << std::endl;
     }
     else {
         std::cout << "Error: StatusInit == Err" << std::endl;
@@ -277,6 +285,7 @@ void Product::setValidUntil(Date input){
 void Product::setEdible(bool input){
     if (StatusInit == OK){
         Edible = input;
+        std::cout << "Change successfull" << std::endl;
     }
     else {
         std::cout << "Error: StatusInit == Err" << std::endl;
@@ -287,6 +296,7 @@ void Product::setPrice(int input){
     if (StatusInit == OK){
         if (input > 0) {
             Price = input;
+            std::cout << "Change successfull" << std::endl;
         }
         else {
             std::cout << "Error[418]: Price can't be <= 0" << std::endl;
@@ -301,6 +311,7 @@ void Product::setWeight(double input){
     if (StatusInit == OK){
         if (input > 0){
             Weight = input;
+            std::cout << "Change successfull" << std::endl;
         }
         else {
             std::cout << "Error[418]: Weight can't be <= 0" << std::endl;
@@ -317,11 +328,18 @@ void Product::setWeight(double input){
 // получение срока годности
 std::string Product::getExpirationDate(){
     if (StatusInit == OK){
-        int day = DateOfManufacture.getDay() - ValidUntil.getDay();
-        int month = DateOfManufacture.getMonth() - ValidUntil.getMonth();
-        int year = DateOfManufacture.getYear() - ValidUntil.getYear();
-        Date expirationDate = Date(day, month, year);
-        return expirationDate.getDate();
+        if (ValidUntil.getDay() == 0){
+            return "This Product don't have expiration date";
+        }
+        else {
+            int day = abs(DateOfManufacture.getDay() - ValidUntil.getDay());
+            int month = abs(DateOfManufacture.getMonth() - ValidUntil.getMonth());
+            int year = abs(DateOfManufacture.getYear() - ValidUntil.getYear());
+            std::string dayStr = std::to_string(day);
+            std::string monthStr = std::to_string(month);
+            std::string yearStr = std::to_string(year);
+            return (dayStr + "."+ monthStr + "." +yearStr);
+        }
     }
     else {
         std::cout << "Error: StatusInit == Err" << std::endl;
@@ -410,7 +428,7 @@ void Product::tryUp(int numberOfPeople){
 
 bool Product::compareArticle(Product otherProduct){
     if (StatusInit == OK){
-        return (Type == otherProduct.getType() && Name == otherProduct.getName() && Article == otherProduct.getArticle());
+        return (Article == otherProduct.getArticle());
     }
     else {
         std::cout << "Error: StatusInit == Err" << std::endl;
@@ -418,3 +436,12 @@ bool Product::compareArticle(Product otherProduct){
     }
 }
 
+bool Product::canCookTogether(Product otherProduct){
+    if (StatusInit == OK){
+        return (Edible == otherProduct.getEdible());
+    }
+    else {
+        std::cout << "Error: StatusInit == Err" << std::endl;
+        return false;
+    }
+}
