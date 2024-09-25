@@ -12,7 +12,9 @@ int main(){
     Date valUnt = Date(25, 8, 2025);
 
     // создал печеньки
-    Product cookie1 = Product("Печеньки шоколадные", "Любятово", "LU-COK-CC", "Сладкие", "Темно-коричневые", "Коробка", create, valUnt, true, 120, 0.4);
+    Product cookie1 = Product("Печеньки шоколадные", "Любятово", "LU-COK-CC",
+                              "Сладкие", "Темно-коричневые", "Коробка",
+                              create, valUnt, true, 120, 0.4);
 
     // попытка впихнуть печеньки в пустой список
     std::cout << "Try add cookie1 in shop (List):" << std::endl;
@@ -43,7 +45,10 @@ int main(){
     std::cout << std::endl;
 
     // создал печеньки2 = печеньки1
-    Product cookie2 = Product("Печеньки шоколадные", "Любятово", "LU-COK-CC", "Сладкие", "Темно-коричневые", "Коробка", create, valUnt, true, 120, 0.4);
+    Product cookie2 = Product("Печеньки шоколадные", "Любятово", "LU-COK-CC",
+                              "Сладкие", "Темно-коричневые", "Коробка",
+                              create, valUnt, true, 120, 0.4);
+
 
     std::cout << "Try add cookie2 == cookie1 in shop (list)" << std::endl;
     // попытка впихнуть печеньки2 в список, где лежат такие же печеньки1
@@ -76,6 +81,33 @@ int main(){
     std::cout << cookie2.getExpirationDate() << std::endl;
     std::cout << std::endl;
 
+    // пробовать съесть 
+    std::cout << "Try eat it (cookie2)" << std::endl;
+    cookie2.tryEat();
+    std::cout << std::endl;
+    // пробовать купить 
+    std::cout << "Try buy it (cookie2)" << std::endl;
+    cookie2.tryBuy(500);
+    std::cout << std::endl;
+    // пробовать поднять 
+    std::cout << "Try up it (cookie2)" << std::endl;
+    cookie2.tryUp(1);
+    std::cout << std::endl;
+    // пробовать приготовить 
+    std::cout << "Try cook it (cookie2)" << std::endl;
+    cookie2.tryCook();
+    std::cout << std::endl;
+    // пробовать открыть 
+    std::cout << "Try open it (cookie2)" << std::endl;
+    cookie2.tryOpen();
+    std::cout << std::endl;
+
+    // узнать можно ли приготовить вместе два товара
+    std::cout << "Can cook together?" << std::endl;
+    std::cout << cookie2.canCookTogether(cookie1) << std::endl;
+    std::cout << std::endl;
+    
+
     // попытка впихнуть изменненые печеньки2 в список
     std::cout << "Try add changed cookie2 in shop (list)" << std::endl;
     if (!shop.findProduct(cookie2)) {
@@ -87,7 +119,34 @@ int main(){
     }
     std::cout << std::endl;
 
+    Date rtxValUnt = Date(0, 0, 0);
 
+    Product rtx3070 = Product("Видео карты", "Nvidia RTX 3070", "NV-GPU-37",
+                              "None", "Черные", "Коробка",
+                              create, rtxValUnt, true, 120000, 0.8);
+
+    // попытка впихнуть rtx3070 в список
+    std::cout << "Try add rtx3070 in shop (list)" << std::endl;
+
+    if (!shop.findProduct(rtx3070)) {
+        shop.push_back(rtx3070);
+        std::cout << "Add successfull" << std::endl;
+    }
+    else {
+        std::cout << "Error: Product with this Article already on the list" << std::endl;
+    }
+    std::cout << std::endl;
+
+    // узнать срок годности
+    std::cout << "rtx3070 ExpirationDate:" << std::endl;
+    std::cout << rtx3070.getExpirationDate() << std::endl;
+    std::cout << std::endl;
+    // узнать можно ли приготовить вместе два товара
+    std::cout << "Can cook together?" << std::endl;
+    std::cout << cookie2.canCookTogether(rtx3070) << std::endl;
+    std::cout << std::endl;
+
+    std::cout << "Output list:" << std::endl;
     shop.printProduct();
 
     std::cout << std::endl;

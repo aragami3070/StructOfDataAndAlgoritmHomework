@@ -52,7 +52,7 @@ public:
 	}
 
 	void printProduct() {
-		Node<Product>* temp = Head;//доп указатель на голову
+		Node<T>* temp = Head;//доп указатель на голову
 		while (temp != Tail->next && temp != nullptr) {//пока не дошли до конца
 			//вывод значения элемента на котором находится указатель temp
 			temp->inf.printAll();
@@ -73,8 +73,8 @@ public:
 		return false;
 	}
 
-	bool findProduct(Product value){
-		Node<Product>* temp = Head;
+	bool findProduct(T value){
+		Node<T>* temp = Head;
 		while (temp != nullptr) {
 			if (value.compareArticle(temp->inf)){
 				return true;

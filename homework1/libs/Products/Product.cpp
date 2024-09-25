@@ -1,5 +1,6 @@
 #include "Product.h"
 #include <cstdlib>
+#include <ctime>
 #include <iostream>
 #include <string>
 
@@ -8,6 +9,7 @@
 // проверка на производственный брак
 bool Product::manufacturingDefects(){
     if (StatusInit == OK) {
+        srand(std::time(NULL));
         int randResult = rand() % 101;
         if (randResult == 100) {
             return false;
@@ -46,8 +48,8 @@ Product::Product(std::string type,
             Edible = edible;
             Price = price;
             Weight = weight;
-            Status = manufacturingDefects();
             StatusInit = OK;
+            Status = manufacturingDefects();
         }
         else {
             std::cout << "Error[418]: Date of manufacture can't be 0.0.0" << std::endl;
@@ -190,7 +192,6 @@ void Product::printAll(){
         std::cout << "Error: StatusInit == Err" << std::endl;
     }
 }
-
 
 
 
