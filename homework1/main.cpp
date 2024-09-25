@@ -5,7 +5,7 @@
 
 int main(){
     // создал список
-    List<Product> shop = List<Product>();
+    List shop = List();
 
     // создал даты
     Date create = Date(25, 8, 2024);
