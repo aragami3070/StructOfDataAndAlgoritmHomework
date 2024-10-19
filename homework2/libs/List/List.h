@@ -4,7 +4,7 @@
 
 
 struct Node {
-	Transport inf;
+	Transport* inf;
 	Node* next;
 	Node* prev;
 };
@@ -24,15 +24,15 @@ public:
 		delList();
 	}
 
-	void push_back(Transport value);
+	void push_back(Transport* value);
 
 	void printTransport();
 
-	bool findNode(Transport value);
+	bool findNode(Transport* value);
 
-	bool findTransport(Transport value);
+	bool findTransport(Transport* value);
 
-	void insertAfter(Node* afterThis, Transport value);
+	void insertAfter(Node* afterThis, Transport* value);
 
 	void del_elem(Node* del_this);
     

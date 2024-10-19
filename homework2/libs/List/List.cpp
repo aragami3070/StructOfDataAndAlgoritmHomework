@@ -1,6 +1,6 @@
 #include "List.h"
 
-void List::push_back(Transport value) {
+void List::push_back(Transport* value) {
 	Node* new_cell = new Node;//создали новый элемент
 	new_cell->inf = value;//присвоили ему значение;
 	if (!Head && !Tail) {//если список пуст
@@ -25,7 +25,7 @@ void List::printTransport() {
 	std::cout << std::endl;
 }
 
-bool List::findNode(Transport value){
+bool List::findNode(Transport* value){
 	Node* temp = Head;
 	while (temp != nullptr) {
 		if (temp->inf == value){
@@ -36,7 +36,7 @@ bool List::findNode(Transport value){
 	return false;
 }
 
-bool List::findTransport(Transport value){
+bool List::findTransport(Transport* value){
 	Node* temp = Head;
 	while (temp != nullptr) {
 		if (value.compareArticle(temp->inf)){
@@ -47,7 +47,7 @@ bool List::findTransport(Transport value){
 	return false;
 }
 
-void List::insertAfter(Node* afterThis, Transport value) {
+void List::insertAfter(Node* afterThis, Transport* value) {
 	Node* temp = new Node;//новый элемент
 	temp->inf = value;//присваиваем значение
 	//если вставляем после хвоста
