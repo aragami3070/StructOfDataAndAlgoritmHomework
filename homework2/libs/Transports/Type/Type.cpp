@@ -1,5 +1,7 @@
 
 #include "Type.h"
+#include <iostream>
+using namespace std;
 // Type class
 
 // Конструктор
@@ -35,6 +37,11 @@ bool Type::tryTransfer(){
     return true;
 }
 
+void Type::printType(){
+    cout << "Нужное кол-во челове для использования = " << NumOfPeopleToUse << endl 
+        << "Дополнительная конструкция = " << AdditionalConstruction << endl;
+}
+
 // грузовой транспорт
 
 // get метод
@@ -52,6 +59,11 @@ bool Cargo::tryTransfer(double weight){
         return true;
     }
     return false;
+}
+void Cargo::printType(){
+    cout << "Нужное кол-во челове для использования = " << NumOfPeopleToUse << endl 
+        << "Дополнительная конструкция = " << AdditionalConstruction << endl
+        << "Грузоподъемность = " << LoadCapacity << endl;
 }
 
 // пассажирский транспорт
@@ -71,4 +83,10 @@ bool Passenger::tryTransfer(int numOfPassengers){
         return true;
     }
     return false;
+}
+
+void Passenger::printType(){
+    cout << "Нужное кол-во челове для использования = " << NumOfPeopleToUse << endl 
+        << "Дополнительная конструкция = " << AdditionalConstruction << endl
+        << "Пассажирские места = " << Seats << endl;
 }

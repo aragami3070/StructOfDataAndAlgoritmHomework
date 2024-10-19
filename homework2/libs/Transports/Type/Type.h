@@ -23,6 +23,7 @@ public:
     void setAdditionalConstruction(bool newAdditionalConstruction);
 
     virtual bool tryTransfer();
+    virtual void printType();
 };
 
 // грузовой транспорт
@@ -49,6 +50,8 @@ public:
 
     // можно ли перевезти данное кол-во груза
     bool tryTransfer(double weight);
+
+    void printType();
 };
 
 // пассажирский транспорт
@@ -74,4 +77,6 @@ public:
 
     // можно ли перевезти данное кол-во человек
     bool tryTransfer(int numOfPassengers);
+
+    void printType();
 };
