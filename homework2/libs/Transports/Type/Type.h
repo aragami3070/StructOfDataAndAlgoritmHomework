@@ -19,8 +19,8 @@ public:
     bool getAdditionalConstruction();
 
     // set методы
-    void setNumOfPeopleToUse();
-    void setAdditionalConstruction();
+    void setNumOfPeopleToUse(int newNumOfPeopleToUse);
+    void setAdditionalConstruction(bool newAdditionalConstruction);
 
     virtual bool tryTransfer();
 };
