@@ -18,7 +18,7 @@ void List::printTransport() {
 	Node* temp = Head;//доп указатель на голову
 	while (temp != Tail->next && temp != nullptr) {//пока не дошли до конца
 		//вывод значения элемента на котором находится указатель temp
-		temp->inf.printAll();
+		temp->inf->printall();
 		//передвигаем указатель на следующий элемент
 		temp = temp->next;
 	}
@@ -39,7 +39,7 @@ bool List::findNode(Transport* value){
 bool List::findTransport(Transport* value){
 	Node* temp = Head;
 	while (temp != nullptr) {
-		if (value.compareArticle(temp->inf)){
+		if (value->compareTransport(temp->inf)){
 			return true;
 		}
 		temp = temp->next;
