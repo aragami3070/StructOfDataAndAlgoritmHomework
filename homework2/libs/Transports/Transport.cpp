@@ -188,6 +188,9 @@ int Transport::getMaxNumOfUses(){
         return -1;
     }
 }
+StatusTransport Transport::getStatus(){
+    return Status;
+}
 
 void Transport::printall(){
     if (Status == Ok) {
@@ -301,6 +304,9 @@ void Transport::setMaxNumOfUses(int newMaxNumOfUses){
     else {
         cout << "Create Error" << endl;
     }
+}
+void Transport::setStatusErr(){
+    Status = Err;
 }
 
 // Сравнить два транспорта

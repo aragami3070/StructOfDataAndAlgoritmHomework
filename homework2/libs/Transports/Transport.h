@@ -50,7 +50,7 @@ public:
     int getNumberOfUses();
     int getMaxNumOfUses();
     StatusTransport getStatus();
-    void printall();
+    virtual void printall();
 
     // set методы
 
@@ -62,6 +62,7 @@ public:
     void setWeight(double newWeight);
     void setCost(double newCost);
     void setMaxNumOfUses(int newMaxNumOfUses);
+    void setStatusErr();
 
     // Сравнить два транспорта
     virtual bool compareTransport(Transport* otherTransport);
