@@ -17,17 +17,18 @@ private:
     StatusTransport Status;     // Правильно ли создан класс
 
 protected:
+    string Model;                // Модель транспорта
     Cargo* IsCargo;              // Является ли этот транспорт грузовым
     Passenger* IsPassenger;      // Является ли этот транспорт пассажирским
-    double EnginePower;         // Мощность двигателя
-    double MaxSpeed;            // Максимальная скорость
-    double Weight;              // Вес
-    double Cost;                // Цена
+    double EnginePower;          // Мощность двигателя
+    double MaxSpeed;             // Максимальная скорость
+    double Weight;               // Вес
+    double Cost;                 // Цена
 
 public:
     // Конструктор
-    Transport(double enginePower,double maxSpeed, double weight,
-              double cost, int maxNumOfUses);
+    Transport(string model, double enginePower, double maxSpeed,
+              double weight, double cost, int maxNumOfUses);
 
     // Конструктор копирования
     Transport(Transport &transport);
@@ -39,6 +40,7 @@ public:
 
     // get методы
 
+    string getModel();
     Cargo* getIsCargo();
     Passenger* getIsPassenger();
     double getEnginePower();
@@ -52,6 +54,7 @@ public:
 
     // set методы
 
+    void setModel(string newModel);
     void setCargo(Cargo* newCargo);
     void setPassenger(Passenger* newPassenger);
     void setEnginePower(double newEnginePower);

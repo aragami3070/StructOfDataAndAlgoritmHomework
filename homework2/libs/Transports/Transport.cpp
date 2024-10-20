@@ -2,16 +2,18 @@
 #include "Type/Type.h"
 
 #include <iostream>
+#include <string>
 
 
 // Конструктор
-Transport::Transport(double enginePower,double maxSpeed, double weight, 
-                     double cost, int maxNumOfUses){
+Transport::Transport(string model, double enginePower, double maxSpeed,
+                     double weight, double cost, int maxNumOfUses){
     if (enginePower > 0) {
         if (maxSpeed > 0) {
             if (weight > 0) {
                 if (cost > 0) {
                     if (maxNumOfUses > 0) {
+                        Model = model;
                         IsCargo = nullptr;
                         IsPassenger = nullptr;
                         EnginePower = enginePower;
@@ -50,6 +52,7 @@ Transport::Transport(Transport &transport){
                 if (transport.Weight > 0) {
                     if (transport.Cost > 0) {
                         if (transport.MaxNumOfUses > 0) {
+                            Model = transport.Model;
                             IsCargo = nullptr;
                             IsPassenger = nullptr;
                             EnginePower = transport.EnginePower;
@@ -92,6 +95,15 @@ Transport::~Transport(){
 
 // get методы
 
+string Transport::getModel(){
+    if (Status == Ok) {
+        return Model;
+    }
+    else {
+        cout << "Create Error" << endl;
+        return "";
+    }
+}
 Cargo* Transport::getIsCargo(){
     if (Status == Ok) {
         if (IsCargo != nullptr){
@@ -179,7 +191,8 @@ int Transport::getMaxNumOfUses(){
 
 void Transport::printall(){
     if (Status == Ok) {
-        cout << "Мощность мотора = " << EnginePower << endl
+        cout << "Модель = " << Model << endl 
+            << "Мощность мотора = " << EnginePower << endl
             << "Максимальная скорость = "<< MaxSpeed << endl
             << "Вес = "<< Weight << endl
             << "Цена = "<< Cost << endl
@@ -196,6 +209,14 @@ void Transport::printall(){
 
 // set методы
 
+void Transport::setModel(string newModel){
+    if (Status == Ok) {
+        Model = newModel;
+    }
+    else {
+        cout << "Create Error" << endl;
+    }
+}
 void Transport::setCargo(Cargo* newCargo){
     if (Status == Ok) {
         IsPassenger = nullptr;
@@ -286,10 +307,11 @@ void Transport::setMaxNumOfUses(int newMaxNumOfUses){
 bool Transport::compareTransport(Transport* otherTransport){
     if (Status == Ok && otherTransport->Status == Ok) {
         return (
-            IsCargo == otherTransport->IsCargo && IsPassenger == otherTransport->IsPassenger && 
-            EnginePower == otherTransport->EnginePower && MaxSpeed == otherTransport->MaxSpeed && 
-            Weight == otherTransport->Weight && Cost == otherTransport->Cost && 
-            MaxNumOfUses == otherTransport->MaxNumOfUses && NumberOfUses == otherTransport->NumberOfUses
+            Model == otherTransport->Model && IsCargo == otherTransport->IsCargo && 
+            IsPassenger == otherTransport->IsPassenger && EnginePower == otherTransport->EnginePower && 
+            MaxSpeed == otherTransport->MaxSpeed && Weight == otherTransport->Weight &&
+            Cost == otherTransport->Cost && MaxNumOfUses == otherTransport->MaxNumOfUses &&
+            NumberOfUses == otherTransport->NumberOfUses
         );
     }
     else {
