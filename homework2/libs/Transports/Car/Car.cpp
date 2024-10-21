@@ -111,10 +111,11 @@ bool Car::compareTransport(Car* otherCar){
 bool Car::tryGo(){
     if (getStatus() == Ok) {
         if (getNumberOfUses() <= getMaxNumOfUses()){
+            cout << "Vroom vroom" << endl;
             return true;
         }
         else {
-            cout << "Error: This transport need maintenance" << endl;
+            cout << "Error: This car need maintenance" << endl;
             return false;
         }
     }
@@ -131,7 +132,7 @@ bool Car::tryTransferCargo(double weightCargo){
             return IsCargo->tryTransfer(weightCargo);
         }
         else {
-            cout << "Error: This transport isn't cargo" << endl;
+            cout << "Error: This car isn't cargo" << endl;
             return false;
         }
     }
@@ -148,7 +149,7 @@ bool Car::tryTransferPeople(int numberOfPassenger){
             return IsPassenger->tryTransfer(numberOfPassenger);
         }
         else {
-            cout << "Error: This transport isn't passenger" << endl;
+            cout << "Error: This car isn't passenger" << endl;
             return false;
         }
     }
