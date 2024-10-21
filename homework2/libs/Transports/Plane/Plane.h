@@ -1,4 +1,5 @@
 #include "../Transport.h"
+#include <iostream>
 
 class Plane:Transport{
 private:
@@ -10,14 +11,24 @@ public:
         double weight, double cost, int maxNumOfUses, 
         int wingsNumber, bool isScrewPlane):
         Transport(model, enginePower, maxSpeed, weight, cost, maxNumOfUses){
-        WingsNumber = wingsNumber;
-        IsScrewPlane = isScrewPlane;
+        if (WingsNumber > 0 && WingsNumber % 2 == 0) {
+            WingsNumber = wingsNumber;
+            IsScrewPlane = isScrewPlane;
+        }
+        else {
+            cout << "Error: WingsNumber must be > 0 and % 2 == 0" << endl;
+        }
     };
     // Конструктор копирования
     Plane(Plane &plane):Transport(plane.Model, plane.EnginePower, plane.MaxSpeed,
                             plane.Weight, plane.Cost, plane.getMaxNumOfUses()){
-        WingsNumber = plane.WingsNumber;
-        IsScrewPlane = plane.IsScrewPlane;
+        if (WingsNumber > 0 && WingsNumber % 2 == 0) {
+            WingsNumber = plane.WingsNumber;
+            IsScrewPlane = plane.IsScrewPlane;
+        }
+        else {
+            cout << "Error: WingsNumber must be > 0 and % 2 == 0" << endl;
+        }
     }
 
     Plane(){ setStatusErr(); }

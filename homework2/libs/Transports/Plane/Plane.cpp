@@ -110,8 +110,14 @@ bool Plane::compareTransport(Plane* otherPlane){
 // Может ли транспорт поехать/полететь (быть использованым)
 bool Plane::tryGo(){
     if (getStatus() == Ok) {
-        if (getNumberOfUses() <= getMaxNumOfUses() && WingsNumber > 0 && WingsNumber % 2 == 0){
-            return true;
+        if (getNumberOfUses() <= getMaxNumOfUses()){
+            if (WingsNumber > 0 && WingsNumber % 2 == 0) {
+                return true;
+            }
+            else {
+                cout << "Error: WingsNumber must be > 0 and % 2 == 0" << endl;
+                return false;
+            }
         }
         else {
             cout << "Error: This plane need maintenance" << endl;
