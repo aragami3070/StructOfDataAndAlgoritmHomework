@@ -10,7 +10,27 @@ void setBrand(string newBrand);
 void setDorsNumber(int newDorsNumber);
 
 // Car методы
-bool IsBMW();
+
+// Да, да, да шутки про чек
+bool Car::IsBMW(){
+    if (getStatus()) {
+        if (Brand == "BMW"){
+            cout << "CHEEEEEEEEEEEEEEECK" << endl;
+            setStatusErr();
+            return true;
+        }
+        else {
+            cout << "Mmmm nice choice" << endl;
+            return false;
+        }
+    }
+    else {
+        cout << "Create Error" << endl;
+        return false;
+    }
+    
+}
+
 void Car::printall(){
     if (getStatus() == Ok) {
         cout << "Модель = " << Model << endl 
@@ -28,6 +48,9 @@ void Car::printall(){
         }
         cout << "Марка = " << Brand << endl 
             << "Кол-во дверей = " << DorsNumber << endl;
+    }
+    else {
+        cout << "Create Error" << endl;
     }
 }
 
