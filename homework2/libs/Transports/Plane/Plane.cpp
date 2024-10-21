@@ -27,11 +27,11 @@ bool Plane::getIsScrewPlane(){
 
 void Plane::setWingsNumber(int newWingsNumber){
     if (getStatus() == Ok) {
-        if (newWingsNumber > 0) {
+        if (newWingsNumber > 0 && newWingsNumber % 2 == 0) {
             WingsNumber = newWingsNumber;
         }
         else {
-            cout << "WingsNumber can't be <= 0" << endl;
+            cout << "Error: WingsNumber must be > 0 and % 2 == 0" << endl;
         }
     }
     else {
@@ -137,7 +137,7 @@ bool Plane::tryTransferCargo(double weightCargo){
             return IsCargo->tryTransfer(weightCargo);
         }
         else {
-            cout << "Error: This Plane isn't cargo" << endl;
+            cout << "Error: This plane isn't cargo" << endl;
             return false;
         }
     }
