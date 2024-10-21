@@ -26,15 +26,18 @@ public:
     ~Plane();
 
     // get методы
+
     int getWingsNumber();
     bool getIsScrewPlane();
 
     // set методы
-    void setWingsNumber(string newBrand);
-    void setIsScrewPlane(int newDorsNumber);
+
+    void setWingsNumber(int newWingsNumber);
+    void setIsScrewPlane(bool newIsScrewPlane);
 
     // Plane методы
-    bool tryCheckScrew();
+
+    bool checkScrew();
 
     // перезаписанные методы Transport
 

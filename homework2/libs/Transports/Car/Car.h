@@ -21,6 +21,7 @@ public:
             cout << "DorsNumber can't be <= 0" << endl;
         }
     };
+
     // Конструктор копирования
     Car(Car &car):Transport(car.Model, car.EnginePower, car.MaxSpeed,
                             car.Weight, car.Cost, car.getMaxNumOfUses()){
@@ -39,14 +40,17 @@ public:
     ~Car();
 
     // get методы
+    
     string getBrand();
     int getDorsNumber();
 
     // set методы
+
     void setBrand(string newBrand);
     void setDorsNumber(int newDorsNumber);
 
     // Car методы
+
     bool IsBMW();
 
     // перезаписанные методы Transport

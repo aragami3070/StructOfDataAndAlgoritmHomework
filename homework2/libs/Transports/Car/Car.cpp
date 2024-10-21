@@ -2,6 +2,7 @@
 #include "Car.h"
 
 // get методы
+
 string Car::getBrand(){
     if (getStatus() == Ok) {
         return Brand;
@@ -22,6 +23,7 @@ int Car::getDorsNumber(){
 }
 
 // set методы
+
 void Car::setBrand(string newBrand){
     if (getStatus() == Ok) {
         Brand = newBrand;
