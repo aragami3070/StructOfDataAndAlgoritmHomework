@@ -1,4 +1,5 @@
 #include "../Transport.h"
+#include <iostream>
 
 class Train:Transport{
 private:
@@ -10,15 +11,25 @@ public:
         double weight, double cost, int maxNumOfUses, 
         int wagonsNumber, bool isSteamTrain):
         Transport(model, enginePower, maxSpeed, weight, cost, maxNumOfUses){
-        WagonsNumber = wagonsNumber;
-        IsSteamTrain = isSteamTrain;
+        if (WagonsNumber >= 0) {
+            WagonsNumber = wagonsNumber;
+            IsSteamTrain = isSteamTrain;
+        }
+        else {
+            cout << "Error: WagonsNumber can't be < 0" << endl;
+        }
     };
 
     // Конструктор копирования
     Train(Train &train):Transport(train.Model, train.EnginePower, train.MaxSpeed,
                             train.Weight, train.Cost, train.getMaxNumOfUses()){
-        WagonsNumber = train.WagonsNumber;
-        IsSteamTrain = train.IsSteamTrain;
+        if (WagonsNumber >= 0) {
+            WagonsNumber = train.WagonsNumber;
+            IsSteamTrain = train.IsSteamTrain;
+        }
+        else {
+            cout << "Error: WagonsNumber can't be < 0" << endl;
+        }
     }
 
     Train(){ setStatusErr(); }
