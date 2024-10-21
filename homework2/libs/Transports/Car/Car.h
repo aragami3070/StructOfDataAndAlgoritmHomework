@@ -1,5 +1,6 @@
 #include "../Transport.h"
 #include "../Type/Type.h"
+#include <iostream>
 #include <string>
 
 class Car:Transport{
@@ -12,14 +13,24 @@ public:
         double weight, double cost, int maxNumOfUses, 
         string brand, int dorsNumber):
         Transport(model, enginePower, maxSpeed, weight, cost, maxNumOfUses){
-        Brand = brand;
-        DorsNumber = dorsNumber;
+        if (dorsNumber > 0) {
+            Brand = brand;
+            DorsNumber = dorsNumber;
+        }
+        else {
+            cout << "DorsNumber can't be <= 0" << endl;
+        }
     };
     // Конструктор копирования
     Car(Car &car):Transport(car.Model, car.EnginePower, car.MaxSpeed,
                             car.Weight, car.Cost, car.getMaxNumOfUses()){
-        Brand = car.Brand;
-        DorsNumber = car.DorsNumber;
+        if (car.DorsNumber > 0) {
+            Brand = car.Brand;
+            DorsNumber = car.DorsNumber;
+        }
+        else {
+            cout << "DorsNumber can't be <= 0" << endl;
+        }
     }
 
     Car(){ setStatusErr(); }

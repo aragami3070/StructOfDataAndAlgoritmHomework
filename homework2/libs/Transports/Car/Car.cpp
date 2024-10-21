@@ -2,18 +2,54 @@
 #include "Car.h"
 
 // get методы
-string getBrand();
-int getDorsNumber();
+string Car::getBrand(){
+    if (getStatus() == Ok) {
+        return Brand;
+    }
+    else {
+        cout << "Create Error" << endl;
+        return "";
+    }
+}
+int Car::getDorsNumber(){
+    if (getStatus() == Ok) {
+        return DorsNumber;
+    }
+    else {
+        cout << "Create Error" << endl;
+        return -1; 
+    }
+}
 
 // set методы
-void setBrand(string newBrand);
-void setDorsNumber(int newDorsNumber);
+void Car::setBrand(string newBrand){
+    if (getStatus() == Ok) {
+        Brand = newBrand;
+    }
+    else {
+        cout << "Create Error" << endl;
+    }
+}
+
+void Car::setDorsNumber(int newDorsNumber){
+    if (getStatus() == Ok) {
+        if (newDorsNumber > 0) {
+            DorsNumber = newDorsNumber;
+        }
+        else {
+            cout << "DorsNumber can't be <= 0" << endl;
+        }
+    }
+    else {
+        cout << "Create Error" << endl;
+    }
+}
 
 // Car методы
 
 // Да, да, да шутки про чек
 bool Car::IsBMW(){
-    if (getStatus()) {
+    if (getStatus() == Ok) {
         if (Brand == "BMW"){
             cout << "CHEEEEEEEEEEEEEEECK" << endl;
             setStatusErr();
