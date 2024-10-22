@@ -7,6 +7,7 @@ project(TransportProject VERSION 1.0)
 
 add_library(ListClass STATIC ./libs/List/List.cpp ./libs/List/List.h)
 add_library(TransportsClass STATIC ./libs/Transports/Transport.cpp ./libs/Transports/Transport.h)
+add_library(TypeTransportsClass STATIC ./libs/Transports/Type/Type.cpp ./libs/Transports/Type/Type.h)
 add_library(CarTransportsClass STATIC ./libs/Transports/Car/Car.cpp ./libs/Transports/Car/Car.h)
 add_library(PlaneTransportsClass STATIC ./libs/Transports/Plane/Plane.cpp ./libs/Transports/Plane/Plane.h)
 add_library(TrainTransportsClass STATIC ./libs/Transports/Train/Train.cpp ./libs/Transports/Train/Train.h)
@@ -14,4 +15,4 @@ add_library(TrainTransportsClass STATIC ./libs/Transports/Train/Train.cpp ./libs
 add_executable(TransportProject main.cpp)
 
 target_link_libraries(TransportProject PUBLIC ListClass)
-target_link_libraries(TransportProject PUBLIC TransportsClass CarTransportsClass PlaneTransportsClass TrainTransportsClass)
+target_link_libraries(TransportProject PUBLIC TransportsClass TypeTransportsClass CarTransportsClass PlaneTransportsClass TrainTransportsClass)
