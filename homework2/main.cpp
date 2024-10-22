@@ -4,6 +4,7 @@
 #include "libs/Transports/Plane/Plane.h"
 #include "libs/Transports/Train/Train.h"
 #include <iostream>
+
 int main(){
     //  Создание разного транспората и вывод их атрибутов
     cout << "=======================================================================" << endl;
@@ -11,41 +12,50 @@ int main(){
     cout << "Supra:" << endl;
     supra.printall();
     cout << "=======================================================================" << endl;
-    cout << endl;
     Plane samolet = Plane("Some Plane model", 50000, 500, 70, 50000000, 5000, 4, false);
     cout << "Samolet:" << endl;
     samolet.printall();
     cout << "=======================================================================" << endl;
-    cout << endl;
     Train paravos = Train("Some Train model", 5000, 150, 50, 20000000, 15000, 5, true);
     cout << "Paravos:" << endl;
     paravos.printall();
     cout << "=======================================================================" << endl;
 
-    // добавляю транспорт в список
-    List transportsNote = List();
-    transportsNote.push_back(&supra);
-    transportsNote.push_back(&samolet);
-    transportsNote.push_back(&paravos);
-
-    Transport* testFindNode = transportsNote.findNode(&samolet);
-
     Cargo cargoForCar = Cargo(3, false, 1000);
     supra.setCargo(&cargoForCar);
+    cout << "=======================================================================" << endl;
     supra.printall();
+    cout << "=======================================================================" << endl;
     cout << "Supra (Cargo):" << endl;
     supra.printall();
     cout << "=======================================================================" << endl;
 
     Passenger passengerForPlane = Passenger(4, true, 100);
     samolet.setPassenger(&passengerForPlane);
+    cout << "=======================================================================" << endl;
     samolet.printall();
+    cout << "=======================================================================" << endl;
     cout << "Samolet (Passenger):" << endl;
     samolet.printall();
     cout << "=======================================================================" << endl;
 
-    cout << "Test findNode method (find samolet):" << endl;
-    testFindNode->printall();
-    cout << "=======================================================================" << endl;
-    transportsNote.delList();
+    // Добавлние транспорта в список
+    List transportsNote = List();
+    transportsNote.push_back(&supra);
+    transportsNote.push_back(&samolet);
+    transportsNote.push_back(&paravos);
+
+    Transport* testFindNode = transportsNote.findNode(&samolet);
+    // Использование приведения типов
+    Plane* testDinamicCast = dynamic_cast<Plane*>(testFindNode);
+
+    cout << "Test findNode method and dynamic_cast (find samolet):" << endl;
+    if (testDinamicCast) {
+        testFindNode->printall();
+        cout << "=======================================================================" << endl;
+        transportsNote.delList();
+    }
+    else {
+        cout << "dynamic_cast can't solve this" << endl;
+    }
 }
