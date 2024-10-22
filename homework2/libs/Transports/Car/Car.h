@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 
-class Car:Transport{
+class Car: public Transport{
 private:
     string Brand;   // Марка машины
     int DorsNumber; // Кол-во дверей в машине

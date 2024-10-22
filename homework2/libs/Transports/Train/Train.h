@@ -1,7 +1,7 @@
 #include "../Transport.h"
 #include <iostream>
 
-class Train:Transport{
+class Train: public Transport{
 private:
     int WagonsNumber;   // Кол-во вагонов
     bool IsSteamTrain;  // Это паровоз

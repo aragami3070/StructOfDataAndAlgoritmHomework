@@ -1,7 +1,7 @@
 #include "../Transport.h"
 #include <iostream>
 
-class Plane:Transport{
+class Plane: public Transport{
 private:
     int WingsNumber;    // Кол-во крыльев
     bool IsScrewPlane;  // Это винтовой самолет или нет
