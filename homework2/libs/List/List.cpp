@@ -25,15 +25,15 @@ void List::printTransport() {
 	std::cout << std::endl;
 }
 
-bool List::findNode(Transport* value){
+Transport* List::findNode(Transport* value){
 	Node* temp = Head;
 	while (temp != nullptr) {
-		if (temp->inf == value){
-			return true;
+		if (value->compareTransport(temp->inf)){
+			return temp->inf;
 		}
 		temp = temp->next;
 	}
-	return false;
+	return nullptr;
 }
 
 bool List::findTransport(Transport* value){

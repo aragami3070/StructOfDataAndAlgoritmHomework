@@ -28,7 +28,7 @@ public:
 
 	void printTransport();
 
-	bool findNode(Transport* value);
+	Transport* findNode(Transport* value);
 
 	bool findTransport(Transport* value);
 
