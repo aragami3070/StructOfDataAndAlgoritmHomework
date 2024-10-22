@@ -11,7 +11,7 @@ public:
         double weight, double cost, int maxNumOfUses, 
         int wingsNumber, bool isScrewPlane):
         Transport(model, enginePower, maxSpeed, weight, cost, maxNumOfUses){
-        if (WingsNumber > 0 && WingsNumber % 2 == 0) {
+        if (wingsNumber > 0 && wingsNumber % 2 == 0) {
             WingsNumber = wingsNumber;
             IsScrewPlane = isScrewPlane;
         }
@@ -22,7 +22,7 @@ public:
     // Конструктор копирования
     Plane(Plane &plane):Transport(plane.Model, plane.EnginePower, plane.MaxSpeed,
                             plane.Weight, plane.Cost, plane.getMaxNumOfUses()){
-        if (WingsNumber > 0 && WingsNumber % 2 == 0) {
+        if (plane.WingsNumber > 0 && plane.WingsNumber % 2 == 0) {
             WingsNumber = plane.WingsNumber;
             IsScrewPlane = plane.IsScrewPlane;
         }
