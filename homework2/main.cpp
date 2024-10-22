@@ -1,4 +1,4 @@
-// #include "libs/List/List.h"
+#include "libs/List/List.h"
 #include "libs/Transports/Type/Type.h"
 #include "libs/Transports/Car/Car.h"
 #include "libs/Transports/Plane/Plane.h"
@@ -22,6 +22,14 @@ int main(){
     paravos.printall();
     cout << "=======================================================================" << endl;
 
+    // добавляю транспорт в список
+    List transportsNote = List();
+    transportsNote.push_back(&supra);
+    transportsNote.push_back(&samolet);
+    transportsNote.push_back(&paravos);
+
+    Transport* testFindNode = transportsNote.findNode(&samolet);
+
     Cargo cargoForCar = Cargo(3, false, 1000);
     supra.setCargo(&cargoForCar);
     supra.printall();
@@ -35,4 +43,9 @@ int main(){
     cout << "Samolet (Passenger):" << endl;
     samolet.printall();
     cout << "=======================================================================" << endl;
+
+    cout << "Test findNode method (find samolet):" << endl;
+    testFindNode->printall();
+    cout << "=======================================================================" << endl;
+    transportsNote.delList();
 }
