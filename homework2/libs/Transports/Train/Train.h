@@ -11,7 +11,7 @@ public:
         double weight, double cost, int maxNumOfUses, 
         int wagonsNumber, bool isSteamTrain):
         Transport(model, enginePower, maxSpeed, weight, cost, maxNumOfUses){
-        if (WagonsNumber >= 0) {
+        if (wagonsNumber >= 0) {
             WagonsNumber = wagonsNumber;
             IsSteamTrain = isSteamTrain;
         }
@@ -23,7 +23,7 @@ public:
     // Конструктор копирования
     Train(Train &train):Transport(train.Model, train.EnginePower, train.MaxSpeed,
                             train.Weight, train.Cost, train.getMaxNumOfUses()){
-        if (WagonsNumber >= 0) {
+        if (train.WagonsNumber >= 0) {
             WagonsNumber = train.WagonsNumber;
             IsSteamTrain = train.IsSteamTrain;
         }
