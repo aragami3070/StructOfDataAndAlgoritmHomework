@@ -37,7 +37,7 @@ public:
     Car(){ setStatusErr(); }
 
     // Деструктор
-    ~Car();
+    ~Car(){}
 
     // get методы
     

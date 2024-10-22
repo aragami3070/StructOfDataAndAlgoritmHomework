@@ -35,7 +35,7 @@ public:
     Train(){ setStatusErr(); }
 
     // Деструктор
-    ~Train();
+    ~Train(){}
 
     // get методы
 
