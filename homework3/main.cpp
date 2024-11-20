@@ -3,6 +3,7 @@
 #include "libs/Date/Date.h"
 #include "libs/List/List.h"
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -79,4 +80,29 @@ int main(){
     catch (SomeError& test) {
         test.print();
     }
+
+    cout << "====================================================================" << endl;
+    cout << "Test my exception(try input from file):" << endl;
+
+    try{
+        string inputStr;
+        ifstream input;
+        // существующее название файла
+        // string fileName = "../test.txt"; // использую ../ перед названием файла тк запускаю из папки build
+        // не существующее название файла
+        string fileName = "../testException.txt"; // использую ../ перед названием файла тк запускаю из папки build
+        input.open(fileName);
+        if (input.is_open()) {
+            input >> inputStr;
+            cout << inputStr << endl;
+        }
+        else {
+            throw NotFindFile(fileName);
+        }
+        input.close();
+    }
+    catch (SomeError& test) {
+        test.print();
+    }
+
 }
