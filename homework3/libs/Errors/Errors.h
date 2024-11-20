@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <ostream>
 
@@ -26,4 +25,11 @@ class EmptyList : public SomeError {
 public:
 	EmptyList() {}
 	void print() { cerr << "Error: This List empty" << endl; }
+};
+
+class NotFindFile : public SomeError {
+    string fileName;
+public:
+    NotFindFile(string str) : fileName(str) {}
+    void print() { cerr << "Error[404]: This file:" << fileName << " not found" << endl; }
 };
