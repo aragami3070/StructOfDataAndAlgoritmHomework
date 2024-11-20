@@ -30,7 +30,7 @@ public:
 
 	bool findNode(Product value);
 
-	bool findProduct(Product value);
+	Node* findProduct(Product value);
 
 	void insertAfter(Node* afterThis, Product value);
 

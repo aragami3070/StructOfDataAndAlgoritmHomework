@@ -36,15 +36,15 @@ bool List::findNode(Product value){
 	return false;
 }
 
-bool List::findProduct(Product value){
+Node* List::findProduct(Product value){
 	Node* temp = Head;
 	while (temp != nullptr) {
 		if (value.compareArticle(temp->inf)){
-			return true;
+			return temp;
 		}
 		temp = temp->next;
 	}
-	return false;
+	return nullptr;
 }
 
 void List::insertAfter(Node* afterThis, Product value) {
