@@ -1,4 +1,5 @@
 #include "Product.h"
+#include "../Errors/Errors.h"
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
@@ -52,13 +53,11 @@ Product::Product(std::string type,
             Status = manufacturingDefects();
         }
         else {
-            std::cout << "Error[418]: Date of manufacture can't be 0.0.0" << std::endl;
-            system("pause");
+            throw DateBroken();
         }
     }
     else {
-        std::cout << "Error[418]: Price and weight can't be <=0" << std::endl;
-        system("pause");
+        throw NotZero();
     }
 }
 
