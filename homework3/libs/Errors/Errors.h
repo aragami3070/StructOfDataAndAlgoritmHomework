@@ -22,8 +22,8 @@ public:
 	void print() { cerr << "Error[418]: Date of manufacture can't be 0.0.0"  << endl; }
 };
 
-class DeleteFromEmptyList : public SomeError {
+class EmptyList : public SomeError {
 public:
-	DeleteFromEmptyList() {}
-	void print() { cerr << "Error: This List empty and this elem can't be deleted" << endl; }
+	EmptyList() {}
+	void print() { cerr << "Error: This List empty" << endl; }
 };
