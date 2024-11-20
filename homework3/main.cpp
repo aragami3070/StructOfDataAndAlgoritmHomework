@@ -20,8 +20,8 @@ int main(){
     
     someProducts.push_back(cookie1);
     
-
-    cout << "Test type excpetion:" << endl;
+    // обработка исключения типа Date
+    cout << "Test type excpetion(Date):" << endl;
     try{
         if (create.getYear() % 2 == 0) throw create;
     }
@@ -29,10 +29,12 @@ int main(){
         cerr << "Exception on Date: year is even" << endl;
     }
 
-    cout << "Test my exception:" << endl;
+    cout << "====================================================================" << endl;
+    cout << "Test my exception(DateBroken):" << endl;
 
     Date create2 = Date(0, 0, 0);
 
+    // обработка исключений из класса Errors
     try {
     
         Product cookie2 = Product("Печеньки шоколадные", "Любятово", "LU-COK-CC",
@@ -42,6 +44,10 @@ int main(){
     catch (SomeError& test) {
         test.print();
     }
+
+    cout << "====================================================================" << endl;
+    cout << "Test my exception(NotZero):" << endl;
+
     try {
     
         Product cookie2 = Product("Печеньки шоколадные", "Любятово", "LU-COK-CC",
@@ -52,12 +58,25 @@ int main(){
         test.print();
     }
 
-    cout << "Test my exception:" << endl;
+    cout << "====================================================================" << endl;
+    cout << "Test my exception(try del elem from empty List):" << endl;
 
+    Node* someLink = someProducts.findProduct(cookie1);
+    someProducts.del_elem(someLink);
     try {
-        someProducts.del_elem();
+        someProducts.del_elem(someLink);
     }
     catch (SomeError& test) {
-    
+        test.print();
+    }
+
+    cout << "====================================================================" << endl;
+    cout << "Test my exception(try print empty List):" << endl;
+
+    try {
+        someProducts.printProduct();
+    }
+    catch (SomeError& test) {
+        test.print();
     }
 }
