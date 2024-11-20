@@ -260,7 +260,7 @@ void Product::setDateOfManufacture(Date input){
     if (StatusInit == OK){
         // дата создания не может быть 0.0.0
         if (input.getDay() == 0 || input.getMonth() == 0 || input.getYear() == 0) {
-            std::cout << "Error[418]: Date of manufacture can't be 0.0.0" << std::endl;
+            throw DateBroken();
         }
         else {
             DateOfManufacture.setDate(input);
@@ -299,7 +299,7 @@ void Product::setPrice(int input){
             std::cout << "Change successfull" << std::endl;
         }
         else {
-            std::cout << "Error[418]: Price can't be <= 0" << std::endl;
+            throw NotZero();
         }
     }
     else {
@@ -314,7 +314,7 @@ void Product::setWeight(double input){
             std::cout << "Change successfull" << std::endl;
         }
         else {
-            std::cout << "Error[418]: Weight can't be <= 0" << std::endl;
+            throw NotZero();
         }
     }
     else {
