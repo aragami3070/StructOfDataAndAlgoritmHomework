@@ -192,6 +192,18 @@ void Product::printAll(){
     }
 }
 
+void Product::printAllToOstream(ostream& output){
+    if (StatusInit == OK) {
+        output << Type << ", " << Name << ", " << Article << ", " << Flavor 
+            << ", " << Color << ", " << Packaging << ", " << DateOfManufacture.getDate() 
+            << ", " << ValidUntil.getDate() << ", " << Edible << ", " << Price 
+            << ", " << Weight << ", " << Status << ", " << "OK" << std::endl;
+    }
+    else {
+        cout << "Error: StatusInit == Err" << std::endl;
+    }
+}
+
 
 
 

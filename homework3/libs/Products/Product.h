@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <ostream>
 #include <string>
 #include "../Date/Date.h"
 
@@ -54,6 +55,8 @@ public:
     std::string getStatusInit();
 
     void printAll();
+
+    void printAllToOstream(std::ostream& output);
 
     // пару методов для удобства работы с другими методами
     Date getDateOfManufacture();
